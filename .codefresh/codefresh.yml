@@ -18,6 +18,7 @@ steps:
     working_directory: ${{main_clone}}/app
     commands:
       - npm install
+      - npm run build
     environment:
       - CI=true
 #  backend_unit_test:
