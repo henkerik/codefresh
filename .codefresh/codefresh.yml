@@ -1,0 +1,21 @@
+version: '1.0'
+stages:
+  - clone
+  - test
+  - build
+steps:
+  main_clone:
+    title: Cloning main repository...
+    stage: clone
+    type: git-clone
+    repo: "henkerik/codefresh"
+    revision: "${{CF_BRANCH}}"
+    git: github
+  MyUnitTests:
+    title: Unit test
+    stage: test
+    image: node:13.10
+    commands:
+      - yarn install
+    environment:
+      - CI=true

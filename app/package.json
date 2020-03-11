@@ -1,6 +1,7 @@
 {
   "version": "1.0.0",
   "name": "example-frontend",
+  "homepage": "http://localhost:3000/app",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build"
