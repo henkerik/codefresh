@@ -11,11 +11,19 @@ steps:
     repo: "henkerik/codefresh"
     revision: "${{CF_BRANCH}}"
     git: github
-  MyUnitTests:
-    title: Unit test
+  frontend_unit_test:
+    title: Frontend unit test
     stage: test
     image: node:13.10
+    working_directory: ${{main_clone}}/app
     commands:
-      - yarn install
+      - npm install
     environment:
       - CI=true
+  backend_unit_test:
+    title: Backend unit test
+    stage: test
+    image: noamt/pre-cached-sbt
+    working_directory: ${{main_clone}}/server
+    commands: 
+      - sbt test
