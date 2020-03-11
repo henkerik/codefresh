@@ -24,6 +24,22 @@ steps:
     title: Backend unit test
     stage: test
     image: noamt/pre-cached-sbt
-    working_directory: ${{main_clone}}/server
+    working_directory: ${{main_clone}}/api
     commands: 
       - sbt test
+  frontend_build:
+    title: Building frontend
+    type: build
+    stage: build
+    image_name: app
+    tag: 'master'
+    working_directory: ${{main_clone}}/app
+    dockerfile: Dockerfile
+  backend_build:
+    title: Build backend
+    type: build
+    stage: build
+    image_name: api
+    tag: 'master'
+    working_directory: ${{main_clone}}/api
+    dockerfile: Dockerfile
